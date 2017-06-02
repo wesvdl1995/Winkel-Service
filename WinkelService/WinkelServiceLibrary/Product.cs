@@ -18,13 +18,12 @@ namespace WinkelServiceLibrary
         public Product()
         {
             this.Prijs = 0D;
+            this.Aantal = 0;
         }
     
         public int Id { get; set; }
         public string Naam { get; set; }
         public double Prijs { get; set; }
-        public int VoorraadId { get; set; }
-    
-        public virtual Voorraad Voorraad { get; set; }
+        public int Aantal { get; set; }
     }
 }

@@ -27,7 +27,6 @@ namespace WinkelServiceLibrary
     
         public virtual DbSet<Klant> Klanten { get; set; }
         public virtual DbSet<Product> Producten { get; set; }
-        public virtual DbSet<Voorraad> Voorraden { get; set; }
         public virtual DbSet<Aankoop> Aankopen { get; set; }
         public virtual DbSet<AankoopRegel> AankoopRegels { get; set; }
     }

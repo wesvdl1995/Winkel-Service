@@ -12,12 +12,14 @@ namespace WinkelServiceLibrary
     public interface IWinkelService
     {
         [OperationContract]
-        Boolean RegistreerKlant(string username);
+        bool RegistreerKlant(string username);
         [OperationContract]
-        Klant Login(string username, string password);
+        bool Login(string username, string password);
         [OperationContract]
-        List<Product> GetInventory();
+        double GetKlantSaldo(string username, string password);
         [OperationContract]
-        bool BuyProduct(Klant klant, Product product);
+        List<Product> GetInventory(string username, string password);
+        [OperationContract]
+        bool BuyProduct(string username, string password, Product product);
     }
 }

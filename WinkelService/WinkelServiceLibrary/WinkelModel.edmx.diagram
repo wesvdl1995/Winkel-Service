@@ -7,13 +7,11 @@
       <Diagram DiagramId="5e485d1f6bad4195bfb3a5ddf9a94bfb" Name="Diagram1" >
         <EntityTypeShape EntityType="WinkelModel.Klant" Width="1.5" PointX="1.5" PointY="3.375" />
         <EntityTypeShape EntityType="WinkelModel.Product" Width="1.5" PointX="4.75" PointY="3.375" />
-        <EntityTypeShape EntityType="WinkelModel.Voorraad" Width="1.5" PointX="8.125" PointY="3.375" />
         <EntityTypeShape EntityType="WinkelModel.Aankoop" Width="1.5" PointX="1.5" PointY="6.5" />
         <EntityTypeShape EntityType="WinkelModel.AankoopRegel" Width="1.5" PointX="4.75" PointY="6.5" />
         <AssociationConnector Association="WinkelModel.AankoopRegelProduct" />
         <AssociationConnector Association="WinkelModel.AankoopAankoopRegel" />
         <AssociationConnector Association="WinkelModel.KlantAankoop" />
-        <AssociationConnector Association="WinkelModel.VoorraadProduct" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

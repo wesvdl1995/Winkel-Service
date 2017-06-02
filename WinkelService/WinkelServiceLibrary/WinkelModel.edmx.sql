@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/01/2017 18:51:14
+-- Date Created: 06/02/2017 14:39:41
 -- Generated from EDMX file: C:\Users\Ashwin\Source\Repos\Winkel-Service\WinkelService\WinkelServiceLibrary\WinkelModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,32 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_AankoopRegelProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AankoopRegels] DROP CONSTRAINT [FK_AankoopRegelProduct];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AankoopAankoopRegel]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AankoopRegels] DROP CONSTRAINT [FK_AankoopAankoopRegel];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KlantAankoop]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Aankopen] DROP CONSTRAINT [FK_KlantAankoop];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Klanten]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Klanten];
+GO
+IF OBJECT_ID(N'[dbo].[Producten]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Producten];
+GO
+IF OBJECT_ID(N'[dbo].[Aankopen]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Aankopen];
+GO
+IF OBJECT_ID(N'[dbo].[AankoopRegels]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AankoopRegels];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -41,14 +62,7 @@ CREATE TABLE [dbo].[Producten] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Naam] nvarchar(20)  NOT NULL,
     [Prijs] float  NOT NULL,
-    [VoorraadId] int  NOT NULL
-);
-GO
-
--- Creating table 'Voorraden'
-CREATE TABLE [dbo].[Voorraden] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Hoeveelheid] int  NOT NULL
+    [Aantal] int  NOT NULL
 );
 GO
 
@@ -82,12 +96,6 @@ GO
 -- Creating primary key on [Id] in table 'Producten'
 ALTER TABLE [dbo].[Producten]
 ADD CONSTRAINT [PK_Producten]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'Voorraden'
-ALTER TABLE [dbo].[Voorraden]
-ADD CONSTRAINT [PK_Voorraden]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -150,21 +158,6 @@ GO
 CREATE INDEX [IX_FK_KlantAankoop]
 ON [dbo].[Aankopen]
     ([KlantId]);
-GO
-
--- Creating foreign key on [VoorraadId] in table 'Producten'
-ALTER TABLE [dbo].[Producten]
-ADD CONSTRAINT [FK_VoorraadProduct]
-    FOREIGN KEY ([VoorraadId])
-    REFERENCES [dbo].[Voorraden]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_VoorraadProduct'
-CREATE INDEX [IX_FK_VoorraadProduct]
-ON [dbo].[Producten]
-    ([VoorraadId]);
 GO
 
 -- --------------------------------------------------

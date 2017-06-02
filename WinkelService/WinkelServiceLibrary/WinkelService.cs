@@ -11,27 +11,64 @@ namespace WinkelServiceLibrary
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "WinkelService" in both code and config file together.
     public class WinkelService : IWinkelService
     {
-        public bool BuyProduct(Klant klant, Product product)
+        public bool BuyProduct(string username, string password, Product product)
         {
             throw new NotImplementedException();
         }
 
-        public List<Product> GetInventory()
+        public List<Product> GetInventory(string username, string password)
         {
-            throw new NotImplementedException();
+            using (WinkelModelContainer ctx = new WinkelModelContainer())
+            {
+                if (Login(username, password))
+                {
+                    var products = from p in ctx.Producten
+                                   select p;
+                    return products.ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
-        public Klant Login(string username, string password)
+        public bool Login(string username, string password)
         {
-            using ( WinkelModelContainer ctx = new WinkelModelContainer())
+            bool result = false;
+            using (WinkelModelContainer ctx = new WinkelModelContainer())
             {
                 var klant = from k in ctx.Klanten
-                            where k.Username == username && k.Password == password
+                            where k.Username.Equals(username) && k.Password.Equals(password)
                             select k;
 
-                return klant.Single();
-                //Does NOT return an object. Gives HTTP error?
+                if (klant.Count() != 1)
+                {
+                    return result;
+                }
+                else
+                {
+                    result = true;
+                }
+
             }
+            return result;
+        }
+
+        public double GetKlantSaldo(string username, string password)
+        {
+            double klantSaldo = 0.0;
+            using (WinkelModelContainer ctx = new WinkelModelContainer())
+            {
+                if (Login(username, password))
+                {
+                    var saldo = from s in ctx.Klanten
+                                where s.Username.Equals(username)
+                                select s.Saldo;
+                    klantSaldo = saldo.Single();
+                }
+            }
+            return klantSaldo;
         }
 
         public bool RegistreerKlant(string username)
@@ -47,7 +84,7 @@ namespace WinkelServiceLibrary
                 using (WinkelModelContainer ctx = new WinkelModelContainer())
                 {
                     var checkForKlant = from klant in ctx.Klanten
-                                        where klant.Username == username
+                                        where klant.Username.Equals(username)
                                         select klant;
 
                     if (checkForKlant.Count() != 0)

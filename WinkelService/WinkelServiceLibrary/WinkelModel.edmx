@@ -8,7 +8,6 @@
   <EntityContainer Name="WinkelModelStoreContainer">
     <EntitySet Name="Klanten" EntityType="WinkelModel.Store.Klanten" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Producten" EntityType="WinkelModel.Store.Producten" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Voorraden" EntityType="WinkelModel.Store.Voorraden" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Aankopen" EntityType="WinkelModel.Store.Aankopen" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="AankoopRegels" EntityType="WinkelModel.Store.AankoopRegels" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="AankoopRegelProduct" Association="WinkelModel.Store.AankoopRegelProduct">
@@ -22,10 +21,6 @@
     <AssociationSet Name="KlantAankoop" Association="WinkelModel.Store.KlantAankoop">
       <End Role="Klant" EntitySet="Klanten" />
       <End Role="Aankoop" EntitySet="Aankopen" />
-    </AssociationSet>
-    <AssociationSet Name="VoorraadProduct" Association="WinkelModel.Store.VoorraadProduct">
-      <End Role="Voorraad" EntitySet="Voorraden" />
-      <End Role="Product" EntitySet="Producten" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Klanten">
@@ -44,14 +39,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Naam" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="Prijs" Type="float" Nullable="false" DefaultValue="0" />
-    <Property Name="VoorraadId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Voorraden">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Hoeveelheid" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Aantal" Type="int" Nullable="false" DefaultValue="0" />
   </EntityType>
   <EntityType Name="Aankopen">
     <Key>
@@ -106,18 +94,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="VoorraadProduct">
-    <End Role="Voorraad" Type="WinkelModel.Store.Voorraden" Multiplicity="1" />
-    <End Role="Product" Type="WinkelModel.Store.Producten" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Voorraad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="VoorraadId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -125,7 +101,6 @@
         <EntityContainer Name="WinkelModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Klanten" EntityType="WinkelModel.Klant" />
           <EntitySet Name="Producten" EntityType="WinkelModel.Product" />
-          <EntitySet Name="Voorraden" EntityType="WinkelModel.Voorraad" />
           <EntitySet Name="Aankopen" EntityType="WinkelModel.Aankoop" />
           <EntitySet Name="AankoopRegels" EntityType="WinkelModel.AankoopRegel" />
           <AssociationSet Name="AankoopRegelProduct" Association="WinkelModel.AankoopRegelProduct">
@@ -139,10 +114,6 @@
           <AssociationSet Name="KlantAankoop" Association="WinkelModel.KlantAankoop">
             <End Role="Klant" EntitySet="Klanten" />
             <End Role="Aankoop" EntitySet="Aankopen" />
-          </AssociationSet>
-          <AssociationSet Name="VoorraadProduct" Association="WinkelModel.VoorraadProduct">
-            <End Role="Voorraad" EntitySet="Voorraden" />
-            <End Role="Product" EntitySet="Producten" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Klant">
@@ -162,16 +133,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Naam" Type="String" Nullable="false" MaxLength="20" />
           <Property Name="Prijs" Type="Double" Nullable="false" DefaultValue="0.0" />
-          <NavigationProperty Name="Voorraad" Relationship="WinkelModel.VoorraadProduct" FromRole="Product" ToRole="Voorraad" />
-          <Property Name="VoorraadId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Voorraad">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Hoeveelheid" Type="Int32" Nullable="false" DefaultValue="0" />
-          <NavigationProperty Name="Products" Relationship="WinkelModel.VoorraadProduct" FromRole="Voorraad" ToRole="Product" />
+          <Property Name="Aantal" Type="Int32" Nullable="false" DefaultValue="0" />
         </EntityType>
         <EntityType Name="Aankoop">
           <Key>
@@ -230,18 +192,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="VoorraadProduct">
-          <End Type="WinkelModel.Voorraad" Role="Voorraad" Multiplicity="1" />
-          <End Type="WinkelModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Voorraad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="VoorraadId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -264,15 +214,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Naam" ColumnName="Naam" />
           <ScalarProperty Name="Prijs" ColumnName="Prijs" />
-          <ScalarProperty Name="VoorraadId" ColumnName="VoorraadId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Voorraden">
-      <EntityTypeMapping TypeName="IsTypeOf(WinkelModel.Voorraad)">
-        <MappingFragment StoreEntitySet="Voorraden">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Hoeveelheid" ColumnName="Hoeveelheid" />
+          <ScalarProperty Name="Aantal" ColumnName="Aantal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
