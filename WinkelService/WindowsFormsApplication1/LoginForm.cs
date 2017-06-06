@@ -15,13 +15,18 @@ namespace WindowsFormsApplication1
 {
     public partial class LoginForm : Form
     {
+        WinkelService service = new WinkelService();
+        
         public LoginForm()
         {
-            //using (ServiceHost host = new ServiceHost(typeof(WinkelService)))
-            //{
-            //    host.Open();
-            //}
-            InitializeComponent();
+            //using (WinkelModelContainer x = new WinkelModelContainer())
+                //using (ServiceHost host = new ServiceHost(typeof(WinkelService)))
+                //{
+                //    host.Open();
+                //}
+
+
+                InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -72,21 +77,39 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label8.Text = "Gebruikersnaam bestaat al test";
+            if (service.RegistreerKlant(textBox3.Text))
+            {
+                label5.Text = "true";
+            }
+            else
+            {
+                label8.Text = "Gebruikersnaam bestaat al";
+            }
+            
         }
 
         
         private void button2_Click(object sender, EventArgs e)
         {
 
+            if (service.Login(textBox1.Text, textBox2.Text))
+            {
+                Main_MDIParent mdi = new Main_MDIParent();
+                mdi.Show();
+                this.Visible = false;
+            }
+            else
+            {
+                label6.Text = "Gebruikersnaam error test";
+                label7.Text = "Wachtwoord error test";
+            }
+
             //if login = true
-            Main_MDIParent mdi = new Main_MDIParent();
-            mdi.Show();
-            this.Visible = false;
+
+            
 
             //else
-            label6.Text = "Gebruikersnaam error test";
-            label7.Text = "Wachtwoord error test";
+
 
 
             //Form2 f2;
