@@ -103,5 +103,14 @@ namespace WindowsFormsApplication1
         {
             sal = null;
         }
+
+        private void wPFClientInterfaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            ExtraPuntenWPFclient.MainWindow wpfwindow = new ExtraPuntenWPFclient.MainWindow();
+            wpfwindow.Show();
+
+
+        }
     }
 }

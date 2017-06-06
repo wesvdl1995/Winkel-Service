@@ -92,37 +92,18 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (service.Login(textBox1.Text, textBox2.Text))
-            {
-                Main_MDIParent mdi = new Main_MDIParent();
-                mdi.Show();
-                this.Visible = false;
-            }
-            else
-            {
-                label6.Text = "Gebruikersnaam error test";
-                label7.Text = "Wachtwoord error test";
-            }
-
-            //if login = true
-
-            
-
-            //else
-
-
-
-            //Form2 f2;
-            //if (f2 == null)
+            //if (service.Login(textBox1.Text, textBox2.Text))
             //{
-            //    f2 = new Form2();
-            //    f2.MdiParent = this;
-            //    f2.Show();
+                  Main_MDIParent mdi = new Main_MDIParent();
+                  mdi.Show();
+                  this.Visible = false;
             //}
             //else
-            //    f2.Activate();
-
-            //f2.MdiParent = this;
+            //{
+            //    label6.Text = "Gebruikersnaam error test";
+            //    label7.Text = "Wachtwoord error test";
+            //}
+            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

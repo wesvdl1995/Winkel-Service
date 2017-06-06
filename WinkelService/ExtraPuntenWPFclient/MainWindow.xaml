@@ -5,19 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExtraPuntenWPFclient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="214.242" Width="525">
+        Title="Store" Height="214.242" Width="525">
     <Grid>
         <StackPanel>
             
             <Grid>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Content="Inventory" Grid.Column="0" />
-                <Label Content="Products" Grid.Column="1" />
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="123" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Label Content="Inventory" Grid.Row="0" Grid.Column="0" Background="#FF07BBF0" />
+                <Label Content="Products" Grid.Row="0" Grid.Column="1" Background="#FF07BBF0" />
+                <ListBox Grid.Row="1" Grid.Column="0" Background="#FFEEEEEE">
+                    <ListBoxItem>ListBox Item #1</ListBoxItem>
+                    <ListBoxItem>ListBox Item #2</ListBoxItem>
+                    <ListBoxItem>ListBox Item #3</ListBoxItem>
+                </ListBox>
+                <ListBox Grid.Row="1" Grid.Column="1" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBoxItem>ListBox Item #1</ListBoxItem>
+                    <ListBoxItem>ListBox Item #2</ListBoxItem>
+                    <ListBoxItem>ListBox Item #3</ListBoxItem>
+                </ListBox>
+                <Label Content="Money left: €--" Grid.Row="2" Grid.Column="0" Background="#FF07BBF0" />
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Click="Button_Click">buy</Button>
+                    <Button Grid.Column="1">refresh</Button>
+                </Grid>
             </Grid>
-            
+
         </StackPanel>
     </Grid>
 </Window>

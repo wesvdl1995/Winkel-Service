@@ -36,6 +36,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.saldoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uitloggenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wPFClientInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,8 @@
             this.productsToolStripMenuItem,
             this.profileToolStripMenuItem,
             this.saldoToolStripMenuItem,
-            this.uitloggenToolStripMenuItem});
+            this.uitloggenToolStripMenuItem,
+            this.wPFClientInterfaceToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(637, 24);
@@ -81,6 +83,13 @@
             this.uitloggenToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.uitloggenToolStripMenuItem.Text = "Uitloggen";
             this.uitloggenToolStripMenuItem.Click += new System.EventHandler(this.uitloggenToolStripMenuItem_Click);
+            // 
+            // wPFClientInterfaceToolStripMenuItem
+            // 
+            this.wPFClientInterfaceToolStripMenuItem.Name = "wPFClientInterfaceToolStripMenuItem";
+            this.wPFClientInterfaceToolStripMenuItem.Size = new System.Drawing.Size(124, 20);
+            this.wPFClientInterfaceToolStripMenuItem.Text = "WPF client interface";
+            this.wPFClientInterfaceToolStripMenuItem.Click += new System.EventHandler(this.wPFClientInterfaceToolStripMenuItem_Click);
             // 
             // Main_MDIParent
             // 
@@ -110,6 +119,7 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem saldoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uitloggenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wPFClientInterfaceToolStripMenuItem;
     }
 }
 
