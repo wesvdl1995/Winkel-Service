@@ -28,18 +28,23 @@ namespace WinkelServiceLibrary
                         AankoopRegel aankoopRegel = new AankoopRegel { Hoeveelheid = 1 };
                         aankoopRegel.ProductId = product.Id;
                         
-                        //Aankoop aankoop = new Aankoop { Klant = GetKlant(username, password)};
-                        
                         Aankoop aankoop = new Aankoop();
                         aankoop.KlantId = GetKlant(username, password).Id;
                         
                         aankoop.AankoopRegels.Add(aankoopRegel);
 
 
-                        Klant klant = GetKlant(username, password);
-                        klant.Saldo = saldo - prijs;
+                        var klant = from k in ctx.Klanten
+                                where k.Username.Equals(username) && k.Password.Equals(password)
+                                select k;
+                        klant.Single().Saldo = saldo - prijs;
 
-                        product.Aantal = product.Aantal - 1;
+                        var foundProduct = ctx.Producten.Single(p => p.Id == product.Id);
+                        if (foundProduct != null)
+                        {
+                            foundProduct.Aantal -= 1;
+                            ctx.SaveChanges();
+                        }
                         
                         ctx.Aankopen.Add(aankoop);
                         ctx.SaveChanges();
@@ -80,12 +85,21 @@ namespace WinkelServiceLibrary
 
                     var aankopen = from a in ctx.Aankopen
                                    where a.KlantId == klantId
-                                   select a.AankoopRegels;
+                                   select a;
 
-                    foreach (AankoopRegel ar in aankopen)
+                    List<Aankoop> aankopenList = aankopen.ToList();
+                    foreach (Aankoop a in aankopenList)
                     {
-                        producten.Add(ar.Product);
+                        foreach (AankoopRegel ar in a.AankoopRegels)
+                        {
+                            producten.Add(ar.Product);
+                        }
                     }
+
+                    //foreach (AankoopRegel ar in aankopen.ToList())
+                    //{
+                    //    producten.Add(ar.Product);
+                    //}
 
                     return producten;
 
