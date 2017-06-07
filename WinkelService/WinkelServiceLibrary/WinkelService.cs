@@ -31,7 +31,7 @@ namespace WinkelServiceLibrary
                         klant.Saldo -= prijs;
 
                         product.Aantal--;
-
+                        
                         ctx.Aankopen.Add(aankoop);
                         ctx.SaveChanges();
 

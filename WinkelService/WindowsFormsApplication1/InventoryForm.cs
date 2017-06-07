@@ -25,14 +25,15 @@ namespace WindowsFormsApplication1
 
         private void InventoryForm_Load(object sender, EventArgs e)
         {
-            List<AankoopRegel> aankoopList = service.GetAankopen(username, password);
+            List<Aankoop> aankoopList = service.GetAankopen(username, password);
             listBox1.Items.Clear();
             //listBox1.Items.Add("naam \t\t aantal");
             if (aankoopList != null)
             {
-                foreach (AankoopRegel r in aankoopList)
+                foreach (Aankoop r in aankoopList)
                 {
-                    listBox1.Items.Add(r.Product.Naam + " \t\t " + r.Product.Aantal);
+                    r.
+                    listBox1.Items.Add(r.AankoopRegels.Product.Naam + " \t\t " + r.Product.Aantal);
                 }
             }
             else
