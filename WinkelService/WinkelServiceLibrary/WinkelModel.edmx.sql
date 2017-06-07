@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/02/2017 14:39:41
+-- Date Created: 06/07/2017 14:05:26
 -- Generated from EDMX file: C:\Users\Ashwin\Source\Repos\Winkel-Service\WinkelService\WinkelServiceLibrary\WinkelModel.edmx
 -- --------------------------------------------------
 
@@ -69,7 +69,6 @@ GO
 -- Creating table 'Aankopen'
 CREATE TABLE [dbo].[Aankopen] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Datum] datetime  NULL,
     [KlantId] int  NOT NULL
 );
 GO

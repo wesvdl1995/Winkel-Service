@@ -21,7 +21,6 @@ namespace WinkelServiceLibrary
         }
     
         public int Id { get; set; }
-        public Nullable<System.DateTime> Datum { get; set; }
         public int KlantId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
