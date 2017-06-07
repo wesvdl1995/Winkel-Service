@@ -75,11 +75,11 @@ namespace WinkelServiceLibrary
             {
                 if (Login(username, password))
                 {
-
+                    int klantId = GetKlant(username, password).Id;
                     List<Product> producten = new List<Product>();
 
                     var aankopen = from a in ctx.Aankopen
-                                   where a.KlantId == GetKlant(username, password).Id
+                                   where a.KlantId == klantId
                                    select a.AankoopRegels;
 
                     foreach (AankoopRegel ar in aankopen)
