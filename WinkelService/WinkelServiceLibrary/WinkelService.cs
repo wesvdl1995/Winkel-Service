@@ -16,7 +16,7 @@ namespace WinkelServiceLibrary
             throw new NotImplementedException();
         }
 
-        public List<Product> GetInventory(string username, string password)
+        public List<Product> GetProducts(string username, string password)
         {
             using (WinkelModelContainer ctx = new WinkelModelContainer())
             {

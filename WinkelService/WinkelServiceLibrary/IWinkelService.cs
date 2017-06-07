@@ -20,7 +20,7 @@ namespace WinkelServiceLibrary
         [OperationContract]
         double GetKlantSaldo(string username, string password);
         [OperationContract]
-        List<Product> GetInventory(string username, string password);
+        List<Product> GetProducts(string username, string password);
         [OperationContract]
         bool BuyProduct(string username, string password, Product product);
     }
