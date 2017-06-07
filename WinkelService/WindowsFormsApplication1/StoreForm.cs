@@ -85,13 +85,23 @@ namespace WindowsFormsApplication1
             }
 
 
-            //refresh inventory
-
-            //refresh saldo
-            //SaldoForm sal = (SaldoForm)Application.OpenForms["SaldoForm"];
-            //if (sal != null)
-            //    sal.Visible();
-            //    sal.Select.label1.Text = "€ " + service.GetKlantSaldo(username, password).ToString();
+            //refresh forms
+            InventoryForm inv = (InventoryForm)Application.OpenForms["InventoryForm"];
+            if (inv != null)
+            {
+                inv.Close();
+                inv = new InventoryForm(username, password);
+                inv.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                inv.Show();
+            }
+            SaldoForm sal = (SaldoForm)Application.OpenForms["SaldoForm"];
+            if (sal != null)
+            {
+                sal.Close();
+                sal = new SaldoForm(username, password);
+                sal.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                sal.Show();
+            }
 
         }
 
@@ -105,6 +115,23 @@ namespace WindowsFormsApplication1
                 if (service.BuyProduct(username, password, selectedProduct))
                 {
                     MessageBox.Show("aankoop success");
+
+                    //refresh forms
+                    InventoryForm inv = (InventoryForm)Application.OpenForms["InventoryForm"];
+                    if (inv != null) {
+                        inv.Close();
+                        inv = new InventoryForm(username, password);
+                        inv.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                        inv.Show();
+                    }
+                    SaldoForm sal = (SaldoForm)Application.OpenForms["SaldoForm"];
+                    if (sal != null)
+                    {
+                        sal.Close();
+                        sal = new SaldoForm(username, password);
+                        sal.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                        sal.Show();
+                    }
                 }
                 else
                 {
