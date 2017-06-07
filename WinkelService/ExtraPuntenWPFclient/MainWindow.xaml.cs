@@ -51,17 +51,14 @@ namespace ExtraPuntenWPFclient
             {
                 productsBox.Items.Add("* Niets om weer te geven *");
             }
-            List<Aankoop> aankoopList = service.GetAankopen(username, password);
+            List<Product> aankoopList = service.GetAankopen(username, password);
             inventoryBox.Items.Clear();
             //listBox1.Items.Add("naam \t\t aantal");
             if (aankoopList != null)
             {
-                foreach (Aankoop r in aankoopList)
+                foreach (Product p in aankoopList)
                 {
-                    foreach (AankoopRegel a in r.AankoopRegels)
-                    {
-                        inventoryBox.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
-                    }
+                    inventoryBox.Items.Add(p.Naam + " \t\t " + p.Aantal);
                 }
             }
             else
