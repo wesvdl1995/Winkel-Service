@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WinkelService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/WinkelServiceLibrary" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWinkelService_RegistreerKlant_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistreerKlant" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_RegistreerKlant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistreerKlantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetWachtwoord_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWachtwoord" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetWachtwoord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWachtwoordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetKlantSaldo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKlantSaldo" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetKlantSaldo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKlantSaldoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_BuyProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuyProduct" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_BuyProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuyProductResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWinkelService">
+    <wsdl:operation name="RegistreerKlant">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/RegistreerKlant" message="tns:IWinkelService_RegistreerKlant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/RegistreerKlantResponse" message="tns:IWinkelService_RegistreerKlant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWachtwoord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetWachtwoord" message="tns:IWinkelService_GetWachtwoord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetWachtwoordResponse" message="tns:IWinkelService_GetWachtwoord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/Login" message="tns:IWinkelService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/LoginResponse" message="tns:IWinkelService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKlantSaldo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetKlantSaldo" message="tns:IWinkelService_GetKlantSaldo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetKlantSaldoResponse" message="tns:IWinkelService_GetKlantSaldo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetProducts" message="tns:IWinkelService_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetProductsResponse" message="tns:IWinkelService_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuyProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/BuyProduct" message="tns:IWinkelService_BuyProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/BuyProductResponse" message="tns:IWinkelService_BuyProduct_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWinkelService" type="tns:IWinkelService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistreerKlant">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/RegistreerKlant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWachtwoord">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/GetWachtwoord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKlantSaldo">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/GetKlantSaldo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyProduct">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/BuyProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WinkelService">
+    <wsdl:port name="BasicHttpBinding_IWinkelService" binding="tns:BasicHttpBinding_IWinkelService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

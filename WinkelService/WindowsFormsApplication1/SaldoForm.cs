@@ -27,10 +27,17 @@ namespace WindowsFormsApplication1
         private void SaldoForm_Load(object sender, EventArgs e)
         {
             WinkelService service = new WinkelService();
-            label1.Text = service.GetKlantSaldo(username, password).ToString(); ;
+            label1.Text = "€ "+service.GetKlantSaldo(username, password).ToString();
+            int saldopersentage = (int)Math.Ceiling(service.GetKlantSaldo(username, password)) * 2;
+            progressBar1.Value = (saldopersentage);
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

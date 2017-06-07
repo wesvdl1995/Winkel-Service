@@ -59,11 +59,12 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(9, 9);
+            this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 13);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "WUBBALUBBADUBDUB";
+            this.label2.Text = "Uw saldo is";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // SaldoForm
             // 

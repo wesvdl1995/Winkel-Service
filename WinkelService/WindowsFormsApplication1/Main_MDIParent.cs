@@ -15,12 +15,18 @@ namespace WindowsFormsApplication1
         private int childFormNumber = 0;
         String username;
         String password;
+        ExtraPuntenWPFclient.MainWindow wpfwindow;
 
         public Main_MDIParent(string username, string password)
         {
             this.username = username;
             this.password = password;
             InitializeComponent();
+        }
+
+        private void Main_MDIParent_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -33,7 +39,7 @@ namespace WindowsFormsApplication1
         {
             if (inv == null)
             {
-                inv = new InventoryForm();
+                inv = new InventoryForm(username, password);
                 inv.MdiParent = this;
                 inv.FormClosed += Inv_FormClosed;
                 inv.Show();
@@ -54,7 +60,7 @@ namespace WindowsFormsApplication1
         {
             if (f2 == null)
             {
-                f2 = new StoreForm();
+                f2 = new StoreForm(username, password);
                 f2.MdiParent = this;
                 f2.FormClosed += F2_FormClosed;
                 f2.Show();
@@ -72,6 +78,7 @@ namespace WindowsFormsApplication1
 
         private void MDIParent1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
             LoginForm f1 = (LoginForm)Application.OpenForms["LoginForm"];
             if (f1 != null)
                 f1.Visible = true;
@@ -80,6 +87,10 @@ namespace WindowsFormsApplication1
                 f1 = new LoginForm();
                 f1.Visible = true;
             }
+
+
+            if (wpfwindow != null)
+                wpfwindow.Close();
         }
 
         private void uitloggenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,15 +122,12 @@ namespace WindowsFormsApplication1
         private void wPFClientInterfaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            ExtraPuntenWPFclient.MainWindow wpfwindow = new ExtraPuntenWPFclient.MainWindow();
+            wpfwindow = new ExtraPuntenWPFclient.MainWindow(username, password);
             wpfwindow.Show();
 
 
         }
 
-        private void Main_MDIParent_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }
