@@ -46,7 +46,6 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Datum" Type="datetime" Nullable="true" />
     <Property Name="KlantId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AankoopRegels">
@@ -140,7 +139,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Datum" Type="DateTime" Nullable="true" />
           <NavigationProperty Name="AankoopRegels" Relationship="WinkelModel.AankoopAankoopRegel" FromRole="Aankoop" ToRole="AankoopRegel" />
           <NavigationProperty Name="Klant" Relationship="WinkelModel.KlantAankoop" FromRole="Aankoop" ToRole="Klant" />
           <Property Name="KlantId" Type="Int32" Nullable="false" />
@@ -222,7 +220,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(WinkelModel.Aankoop)">
         <MappingFragment StoreEntitySet="Aankopen">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Datum" ColumnName="Datum" />
           <ScalarProperty Name="KlantId" ColumnName="KlantId" />
         </MappingFragment>
       </EntityTypeMapping>

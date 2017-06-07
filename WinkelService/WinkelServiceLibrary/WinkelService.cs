@@ -13,7 +13,34 @@ namespace WinkelServiceLibrary
     {
         public bool BuyProduct(string username, string password, Product product)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            double saldo = GetKlantSaldo(username, password);
+            double prijs = product.Prijs;
+
+            if (Login(username, password))
+            {
+                if (saldo >= prijs)
+                {
+                    using (WinkelModelContainer ctx = new WinkelModelContainer())
+                    {
+                        AankoopRegel aankoopRegel = new AankoopRegel { Hoeveelheid = 1, Product = product};
+                        Aankoop aankoop = new Aankoop { Klant = GetKlant(username, password)};
+                        aankoop.AankoopRegels.Add(aankoopRegel);
+
+                        Klant klant = GetKlant(username, password);
+                        klant.Saldo -= prijs;
+
+                        product.Aantal--;
+
+                        ctx.Aankopen.Add(aankoop);
+                        ctx.SaveChanges();
+
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
         }
 
         public List<Product> GetProducts(string username, string password)
@@ -31,6 +58,40 @@ namespace WinkelServiceLibrary
                     return null;
                 }
             }
+        }
+
+        public List<AankoopRegel> GetAankopen(string username, string password)
+        {
+            using (WinkelModelContainer ctx = new WinkelModelContainer())
+            {
+                if (Login(username, password))
+                {
+                    var getAankopen = from aankoop in ctx.AankoopRegels
+                                      where aankoop.Aankoop.Klant == GetKlant(username, password)
+                                      select aankoop;
+                    return getAankopen.ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public Klant GetKlant(string username, string password)
+        {
+            Klant gevondenKlant = null;
+            if (Login(username, password))
+            {
+                using (WinkelModelContainer ctx = new WinkelModelContainer())
+                {
+                    var getKlant = from klant in ctx.Klanten
+                                   where klant.Username.Equals(username) && klant.Password.Equals(password)
+                                   select klant;
+                    gevondenKlant = getKlant.Single();
+                }
+            }
+            return gevondenKlant;
         }
 
         public bool Login(string username, string password)
@@ -126,5 +187,6 @@ namespace WinkelServiceLibrary
             }
             return result;
         }
+
     }
 }
