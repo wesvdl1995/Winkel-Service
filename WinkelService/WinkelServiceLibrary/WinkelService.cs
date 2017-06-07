@@ -25,7 +25,8 @@ namespace WinkelServiceLibrary
                     {
 
 
-                        AankoopRegel aankoopRegel = new AankoopRegel { Hoeveelheid = 1, Product = product};
+                        AankoopRegel aankoopRegel = new AankoopRegel { Hoeveelheid = 1 };
+                        aankoopRegel.ProductId = product.Id;
                         
                         //Aankoop aankoop = new Aankoop { Klant = GetKlant(username, password)};
                         
@@ -36,9 +37,9 @@ namespace WinkelServiceLibrary
 
 
                         Klant klant = GetKlant(username, password);
-                        klant.Saldo -= prijs;
+                        klant.Saldo = saldo - prijs;
 
-                        product.Aantal--;
+                        product.Aantal = product.Aantal - 1;
                         
                         ctx.Aankopen.Add(aankoop);
                         ctx.SaveChanges();
@@ -68,14 +69,26 @@ namespace WinkelServiceLibrary
             }
         }
 
-        public List<Aankoop> GetAankopen(string username, string password)
+        public List<Product> GetAankopen(string username, string password)
         {
             using (WinkelModelContainer ctx = new WinkelModelContainer())
             {
                 if (Login(username, password))
                 {
-                    var getAankopen = ctx.Aankopen.Include("AankoopRegels");
-                    return getAankopen.ToList();
+
+                    List<Product> producten = new List<Product>();
+
+                    var aankopen = from a in ctx.Aankopen
+                                   where a.KlantId == GetKlant(username, password).Id
+                                   select a.AankoopRegels;
+
+                    foreach (AankoopRegel ar in aankopen)
+                    {
+                        producten.Add(ar.Product);
+                    }
+
+                    return producten;
+
                 }
                 else
                 {
