@@ -25,13 +25,14 @@ namespace WindowsFormsApplication1
 
         private void InventoryForm_Load(object sender, EventArgs e)
         {
-            List<Aankoop> aankoopList = service.GetAankopen(username, password);
+            List<Product> aankoopList = service.GetAankopen(username, password);
             listBox1.Items.Clear();
             //listBox1.Items.Add("naam \t\t aantal");
             if (aankoopList != null)
             {
-                foreach (Aankoop r in aankoopList)
+                foreach (Product p in aankoopList)
                 {
+                    listBox1.Items.Add(p.Naam + " \t\t " + p.Aantal);
                     //Console.WriteLine();
                     //Console.WriteLine();
                     //Console.WriteLine(r.AankoopRegels.FirstOrDefault());
@@ -39,10 +40,10 @@ namespace WindowsFormsApplication1
                     //Console.WriteLine();
 
                     //if (r.AankoopRegels.Count > 1)
-                                //foreach (AankoopRegel a in r.AankoopRegels)
-                                //    {
-                                //        listBox1.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
-                                //    }
+                    //foreach (AankoopRegel a in r.AankoopRegels)
+                    //    {
+                    //        listBox1.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
+                    //    }
                     //else if (r.AankoopRegels.Count == 1) {
                     //    AankoopRegel a = r.AankoopRegels.FirstOrDefault();
                     //    listBox1.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
