@@ -32,8 +32,23 @@ namespace WindowsFormsApplication1
             {
                 foreach (Aankoop r in aankoopList)
                 {
-                    r.
-                    listBox1.Items.Add(r.AankoopRegels.Product.Naam + " \t\t " + r.Product.Aantal);
+                    //Console.WriteLine();
+                    //Console.WriteLine();
+                    //Console.WriteLine(r.AankoopRegels.FirstOrDefault());
+                    //Console.WriteLine();
+                    //Console.WriteLine();
+
+                    //if (r.AankoopRegels.Count > 1)
+                                //foreach (AankoopRegel a in r.AankoopRegels)
+                                //    {
+                                //        listBox1.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
+                                //    }
+                    //else if (r.AankoopRegels.Count == 1) {
+                    //    AankoopRegel a = r.AankoopRegels.FirstOrDefault();
+                    //    listBox1.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
+                    //}
+                    //else { }
+
                 }
             }
             else

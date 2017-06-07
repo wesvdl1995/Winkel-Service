@@ -23,9 +23,17 @@ namespace WinkelServiceLibrary
                 {
                     using (WinkelModelContainer ctx = new WinkelModelContainer())
                     {
+
+
                         AankoopRegel aankoopRegel = new AankoopRegel { Hoeveelheid = 1, Product = product};
-                        Aankoop aankoop = new Aankoop { Klant = GetKlant(username, password)};
+                        
+                        //Aankoop aankoop = new Aankoop { Klant = GetKlant(username, password)};
+                        
+                        Aankoop aankoop = new Aankoop();
+                        aankoop.KlantId = GetKlant(username, password).Id;
+                        
                         aankoop.AankoopRegels.Add(aankoopRegel);
+
 
                         Klant klant = GetKlant(username, password);
                         klant.Saldo -= prijs;
