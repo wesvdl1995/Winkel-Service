@@ -40,11 +40,31 @@ namespace ExtraPuntenWPFclient
             List<Product> productList = service.GetProducts(username, password);
             productsBox.Items.Clear();
             //productsBox.Items.Add("id \t naam \t\t prijs \t aantal");
-            foreach (Product p in productList)
+            if (productList != null)
             {
-
-                productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                foreach (Product p in productList)
+                {
+                    productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                }
             }
+            else
+            {
+                productsBox.Items.Add("* Niets om weer te geven *");
+            }
+            List<AankoopRegel> aankoopList = service.GetAankopen(username, password);
+            inventoryBox.Items.Clear();
+            //listBox1.Items.Add("naam \t\t aantal");
+            if (aankoopList != null)
+            {
+                foreach (AankoopRegel r in aankoopList)
+                {
+                    inventoryBox.Items.Add(r.Product.Naam + " \t\t " + r.Product.Aantal);
+                }
+            }
+            else {
+                inventoryBox.Items.Add("* Niets om weer te geven *");
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -65,7 +85,6 @@ namespace ExtraPuntenWPFclient
             }
             else
             {
-
                 MessageBox.Show("geen selectie gemaakt");
             }
         }
@@ -85,16 +104,33 @@ namespace ExtraPuntenWPFclient
             List<Product> productList = service.GetProducts(username, password);
             productsBox.Items.Clear();
             //productsBox.Items.Add("id \t naam \t\t prijs \t aantal");
-            foreach (Product p in productList)
-            {
-                if (p.Aantal > 0)
+            if (productList != null) {
+                foreach (Product p in productList)
                 {
-                    productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                    if (p.Aantal > 0)
+                    {
+                        productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                    }
                 }
             }
+            else
+            {
+                productsBox.Items.Add("* Niets om weer te geven *");
+            }
+
         }
 
         private void productsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void inventoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

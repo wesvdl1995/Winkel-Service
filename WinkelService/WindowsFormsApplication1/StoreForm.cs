@@ -33,12 +33,19 @@ namespace WindowsFormsApplication1
             List<Product> productList = service.GetProducts(username, password);
             listBox1.Items.Clear();
             //listBox1.Items.Add("id \t naam \t\t prijs \t aantal");
-            foreach (Product p in productList)
-            {
-                if (p.Aantal > 0) {
-                    listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+            if (productList != null) {
+                foreach (Product p in productList)
+                {
+                    if (p.Aantal > 0) {
+                        listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                    }
                 }
             }
+            else
+            {
+                listBox1.Items.Add("* Niets om weer te geven *");
+            }
+
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -58,16 +65,34 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //refresh product list
             List<Product> productList = service.GetProducts(username, password);
             listBox1.Items.Clear();
             //listBox1.Items.Add("id \t naam \t\t prijs \t aantal");
-            foreach (Product p in productList)
+            if(productList != null)
             {
-                if (p.Aantal > 0)
+                foreach (Product p in productList)
                 {
-                    listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                    if (p.Aantal > 0)
+                    {
+                        listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                    }
                 }
             }
+            else
+            {
+                listBox1.Items.Add("* Niets om weer te geven *");
+            }
+
+
+            //refresh inventory
+
+            //refresh saldo
+            //SaldoForm sal = (SaldoForm)Application.OpenForms["SaldoForm"];
+            //if (sal != null)
+            //    sal.Visible();
+            //    sal.Select.label1.Text = "€ " + service.GetKlantSaldo(username, password).ToString();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
