@@ -177,7 +177,7 @@ namespace WinkelServiceLibrary
                     }
                     else
                     {
-                        Klant klant = new Klant { Username = username, Password = new string(username.Reverse().ToArray()), Saldo = 30.00 };
+                        Klant klant = new Klant { Username = username, Password = new string(username.Reverse().ToArray()), Saldo = 50.00 };
                         ctx.Klanten.Add(klant);
                         ctx.SaveChanges();
                         result = true;

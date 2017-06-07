@@ -22,7 +22,7 @@
                 </Grid.RowDefinitions>
                 <Label Content="Inventory" Grid.Row="0" Grid.Column="0" Background="#FF07BBF0" />
                 <Label Content="Products" Grid.Row="0" Grid.Column="1" Background="#FF07BBF0" />
-                <ListBox Grid.Row="1" Grid.Column="0" Background="#FFEEEEEE">
+                <ListBox Grid.Row="1" Grid.Column="0" Background="#FFEEEEEE" Name="inventoryBox" SelectionChanged="inventoryList_SelectionChanged">
                     <ListBoxItem>ListBox Item #1</ListBoxItem>
                     <ListBoxItem>ListBox Item #2</ListBoxItem>
                     <ListBoxItem>ListBox Item #3</ListBoxItem>
