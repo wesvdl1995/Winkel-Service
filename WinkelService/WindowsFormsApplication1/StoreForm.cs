@@ -8,33 +8,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using WinkelServiceLibrary;
+
 namespace WindowsFormsApplication1
 {
     public partial class StoreForm : Form
     {
-        public StoreForm()
+        String username;
+        String password;
+        WinkelService service = new WinkelService();
+
+        public StoreForm(string username, string password)
         {
+            this.username = username;
+            this.password = password;
+
             InitializeComponent();
         }
 
         
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            
+            List<Product> productList = service.GetProducts(username, password);
+            listBox1.Items.Clear();
+            foreach (Product p in productList)
+            {
+                if (p.Aantal > 0) {
+                    listBox1.Items.Add(p.Id + " | " + p.Naam + " | " + p.Prijs + " | " + p.Aantal);
+                }
+            }
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //Application.Exit();
-            //Form1 f1 = (Form1)Application.OpenForms["Form1"];
-            //if (f1 != null)
-            //    f1.Visible = true;
-            //else
-            //{
-            //    f1 = new Form1();
-            //    f1.Visible = true;
-            //}
-                
 
         }
 
@@ -50,7 +57,25 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<Product> productList = service.GetProducts(username, password);
+            int ProductIndex = listBox1.SelectedIndex;
+            if (ProductIndex >= 0)
+            {
+                Product selectedProduct = productList[ProductIndex];
+                if (service.BuyProduct(username, password, selectedProduct))
+                {
+                    MessageBox.Show("aankoop success");
+                }
+                else {
+                    MessageBox.Show("error");
+                }
+            }
+            else {
 
+                MessageBox.Show("geen selectie gemaakt");
+            }
+
+            
         }
     }
 }

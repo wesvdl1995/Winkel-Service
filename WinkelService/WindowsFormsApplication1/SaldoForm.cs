@@ -27,7 +27,8 @@ namespace WindowsFormsApplication1
         private void SaldoForm_Load(object sender, EventArgs e)
         {
             WinkelService service = new WinkelService();
-            label1.Text = service.GetKlantSaldo(username, password).ToString(); ;
+            label1.Text = service.GetKlantSaldo(username, password).ToString();
+            progressBar1.Value = ((int)Math.Ceiling(service.GetKlantSaldo(username, password)) * 2);
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -13,16 +13,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using WinkelServiceLibrary;
+
+
 namespace ExtraPuntenWPFclient
 {
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        WinkelService service = new WinkelService();
+        string username;
+        string password;
+
+        public MainWindow(string username, string password)
         {
+            this.username = username;
+            this.password = password;
             InitializeComponent();
+
+
+            List<Product> productList = service.GetProducts(username, password);
+            productsBox.Items.Clear();
+            foreach (Product p in productList)
+            {
+
+                productsBox.Items.Add(p.Id + " | " + p.Naam + " | " + p.Prijs + " | " + p.Aantal);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

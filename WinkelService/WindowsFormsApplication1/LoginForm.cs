@@ -19,13 +19,6 @@ namespace WindowsFormsApplication1
         
         public LoginForm()
         {
-            //using (WinkelModelContainer x = new WinkelModelContainer())
-                //using (ServiceHost host = new ServiceHost(typeof(WinkelService)))
-                //{
-                //    host.Open();
-                //}
-
-
                 InitializeComponent();
         }
 
@@ -67,7 +60,7 @@ namespace WindowsFormsApplication1
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Clipboard.SetText(label5.Text);
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -79,7 +72,7 @@ namespace WindowsFormsApplication1
         {
             if (service.RegistreerKlant(textBox3.Text))
             {
-                label5.Text = "true";
+                label5.Text = service.GetWachtwoord(textBox3.Text);
             }
             else
             {

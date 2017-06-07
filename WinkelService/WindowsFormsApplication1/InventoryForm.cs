@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinkelServiceLibrary;
 
 namespace WindowsFormsApplication1
 {
     public partial class InventoryForm : Form
     {
-        public InventoryForm()
+        String username;
+        String password;
+        public InventoryForm(string username, string password)
         {
+            this.username = username;
+            this.password = password;
             InitializeComponent();
         }
 
@@ -23,6 +28,11 @@ namespace WindowsFormsApplication1
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InventoryForm_Load(object sender, EventArgs e)
         {
 
         }

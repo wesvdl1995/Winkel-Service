@@ -23,6 +23,11 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        private void Main_MDIParent_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -33,7 +38,7 @@ namespace WindowsFormsApplication1
         {
             if (inv == null)
             {
-                inv = new InventoryForm();
+                inv = new InventoryForm(username, password);
                 inv.MdiParent = this;
                 inv.FormClosed += Inv_FormClosed;
                 inv.Show();
@@ -54,7 +59,7 @@ namespace WindowsFormsApplication1
         {
             if (f2 == null)
             {
-                f2 = new StoreForm();
+                f2 = new StoreForm(username, password);
                 f2.MdiParent = this;
                 f2.FormClosed += F2_FormClosed;
                 f2.Show();
@@ -111,15 +116,12 @@ namespace WindowsFormsApplication1
         private void wPFClientInterfaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            ExtraPuntenWPFclient.MainWindow wpfwindow = new ExtraPuntenWPFclient.MainWindow();
+            ExtraPuntenWPFclient.MainWindow wpfwindow = new ExtraPuntenWPFclient.MainWindow(username, password);
             wpfwindow.Show();
 
 
         }
 
-        private void Main_MDIParent_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

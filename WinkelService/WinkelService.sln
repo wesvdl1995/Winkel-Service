@@ -11,6 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinkelClient", "WindowsForm
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraPuntenWPFclient", "ExtraPuntenWPFclient\ExtraPuntenWPFclient.csproj", "{1307C52B-3747-438C-B35E-30F74DB17B30}"
+	ProjectSection(ProjectDependencies) = postProject
+		{20C376FD-AC24-4696-B299-FB8D471EAC3D} = {20C376FD-AC24-4696-B299-FB8D471EAC3D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

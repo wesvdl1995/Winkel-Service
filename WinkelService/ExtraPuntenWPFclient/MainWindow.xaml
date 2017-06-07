@@ -27,7 +27,7 @@
                     <ListBoxItem>ListBox Item #2</ListBoxItem>
                     <ListBoxItem>ListBox Item #3</ListBoxItem>
                 </ListBox>
-                <ListBox Grid.Row="1" Grid.Column="1" SelectionChanged="ListBox_SelectionChanged">
+                <ListBox Grid.Row="1" Grid.Column="1" Name="productsBox">
                     <ListBoxItem>ListBox Item #1</ListBoxItem>
                     <ListBoxItem>ListBox Item #2</ListBoxItem>
                     <ListBoxItem>ListBox Item #3</ListBoxItem>
