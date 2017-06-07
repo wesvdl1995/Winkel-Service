@@ -35,36 +35,13 @@ namespace ExtraPuntenWPFclient
             //ResizeMode = "CanMinimize";
             InitializeComponent();
             
-            moneyLabel.Content = "Money left: € " + (service.GetKlantSaldo(username, password)).ToString();
+            
 
-            List<Product> productList = service.GetProducts(username, password);
-            productsBox.Items.Clear();
-            //productsBox.Items.Add("id \t naam \t\t prijs \t aantal");
-            if (productList != null)
-            {
-                foreach (Product p in productList)
-                {
-                    productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
-                }
-            }
-            else
-            {
-                productsBox.Items.Add("* Niets om weer te geven *");
-            }
-            List<Product> aankoopList = service.GetAankopen(username, password);
-            inventoryBox.Items.Clear();
-            //listBox1.Items.Add("naam \t\t aantal");
-            if (aankoopList != null)
-            {
-                foreach (Product p in aankoopList)
-                {
-                    inventoryBox.Items.Add(p.Naam + " \t\t " + p.Aantal);
-                }
-            }
-            else
-            {
-                inventoryBox.Items.Add("* Niets om weer te geven *");
-            }
+
+            refresh();
+
+
+
 
         }
 
@@ -88,6 +65,7 @@ namespace ExtraPuntenWPFclient
             {
                 MessageBox.Show("geen selectie gemaakt");
             }
+            refresh();
         }
 
         //public static explicit operator MainWindow(System.Windows.Forms.Form v)
@@ -102,23 +80,7 @@ namespace ExtraPuntenWPFclient
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            List<Product> productList = service.GetProducts(username, password);
-            productsBox.Items.Clear();
-            //productsBox.Items.Add("id \t naam \t\t prijs \t aantal");
-            if (productList != null) {
-                foreach (Product p in productList)
-                {
-                    if (p.Aantal > 0)
-                    {
-                        productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
-                    }
-                }
-            }
-            else
-            {
-                productsBox.Items.Add("* Niets om weer te geven *");
-            }
-
+            refresh();
         }
 
         private void productsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -133,7 +95,38 @@ namespace ExtraPuntenWPFclient
 
         private void inventoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+        }
+        private void refresh() {
+            //refresh saldo
+            moneyLabel.Content = "Money left: € " + (service.GetKlantSaldo(username, password)).ToString();
 
+            //refresh product list
+            List<Product> productList = service.GetProducts(username, password);
+            productsBox.Items.Clear();
+            if (productList != null)
+            {
+                foreach (Product p in productList)
+                {
+                    if (p.Aantal > 0)
+                        productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                }
+            }
+            else
+                productsBox.Items.Add("* Niets om weer te geven *");
+
+            //refresh inventory list
+            List<Product> aankoopList = service.GetAankopen(username, password);
+            inventoryBox.Items.Clear();
+            if (aankoopList != null)
+            {
+                foreach (Product p in aankoopList)
+                {
+                    inventoryBox.Items.Add(p.Naam + " \t\t " + p.Prijs);
+                }
+            }
+            else
+                inventoryBox.Items.Add("* Niets om weer te geven *");
         }
     }
 }

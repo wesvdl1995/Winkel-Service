@@ -27,29 +27,12 @@ namespace WindowsFormsApplication1
         {
             List<Product> aankoopList = service.GetAankopen(username, password);
             listBox1.Items.Clear();
-            //listBox1.Items.Add("naam \t\t aantal");
+
             if (aankoopList != null)
             {
                 foreach (Product p in aankoopList)
                 {
-                    listBox1.Items.Add(p.Naam + " \t\t " + p.Aantal);
-                    //Console.WriteLine();
-                    //Console.WriteLine();
-                    //Console.WriteLine(r.AankoopRegels.FirstOrDefault());
-                    //Console.WriteLine();
-                    //Console.WriteLine();
-
-                    //if (r.AankoopRegels.Count > 1)
-                    //foreach (AankoopRegel a in r.AankoopRegels)
-                    //    {
-                    //        listBox1.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
-                    //    }
-                    //else if (r.AankoopRegels.Count == 1) {
-                    //    AankoopRegel a = r.AankoopRegels.FirstOrDefault();
-                    //    listBox1.Items.Add(a.Product.Naam + " \t\t " + a.Product.Aantal);
-                    //}
-                    //else { }
-
+                    listBox1.Items.Add(p.Naam + " \t\t € " + p.Prijs);
                 }
             }
             else

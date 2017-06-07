@@ -115,7 +115,23 @@ namespace WindowsFormsApplication1
                 if (service.BuyProduct(username, password, selectedProduct))
                 {
                     MessageBox.Show("aankoop success");
-
+                    productList = service.GetProducts(username, password);
+                    listBox1.Items.Clear();
+                    //listBox1.Items.Add("id \t naam \t\t prijs \t aantal");
+                    if (productList != null)
+                    {
+                        foreach (Product p in productList)
+                        {
+                            if (p.Aantal > 0)
+                            {
+                                listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        listBox1.Items.Add("* Niets om weer te geven *");
+                    }
                     //refresh forms
                     InventoryForm inv = (InventoryForm)Application.OpenForms["InventoryForm"];
                     if (inv != null) {
@@ -135,7 +151,7 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    MessageBox.Show("error");
+                    MessageBox.Show("Uw saldo is te laag!");
                 }
             }
             else

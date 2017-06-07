@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1
             label1.Text = "€ "+service.GetKlantSaldo(username, password).ToString();
             int saldopersentage = (int)Math.Ceiling(service.GetKlantSaldo(username, password)) * 2;
             progressBar1.Value = (saldopersentage);
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -38,6 +39,11 @@ namespace WindowsFormsApplication1
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
         {
 
         }
