@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
         private int childFormNumber = 0;
         String username;
         String password;
+        ExtraPuntenWPFclient.MainWindow wpfwindow;
 
         public Main_MDIParent(string username, string password)
         {
@@ -77,6 +78,7 @@ namespace WindowsFormsApplication1
 
         private void MDIParent1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
             LoginForm f1 = (LoginForm)Application.OpenForms["LoginForm"];
             if (f1 != null)
                 f1.Visible = true;
@@ -85,6 +87,10 @@ namespace WindowsFormsApplication1
                 f1 = new LoginForm();
                 f1.Visible = true;
             }
+
+
+            if (wpfwindow != null)
+                wpfwindow.Close();
         }
 
         private void uitloggenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,7 +122,7 @@ namespace WindowsFormsApplication1
         private void wPFClientInterfaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            ExtraPuntenWPFclient.MainWindow wpfwindow = new ExtraPuntenWPFclient.MainWindow(username, password);
+            wpfwindow = new ExtraPuntenWPFclient.MainWindow(username, password);
             wpfwindow.Show();
 
 

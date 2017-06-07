@@ -32,8 +32,10 @@ namespace ExtraPuntenWPFclient
         {
             this.username = username;
             this.password = password;
+            //ResizeMode = "CanMinimize";
             InitializeComponent();
-
+            
+            moneyLabel.Content = "Money left: € " + (service.GetKlantSaldo(username, password)).ToString();
 
             List<Product> productList = service.GetProducts(username, password);
             productsBox.Items.Clear();
@@ -67,6 +69,11 @@ namespace ExtraPuntenWPFclient
                 MessageBox.Show("geen selectie gemaakt");
             }
         }
+
+        //public static explicit operator MainWindow(System.Windows.Forms.Form v)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
