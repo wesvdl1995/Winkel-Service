@@ -14,6 +14,8 @@ namespace WinkelServiceLibrary
         [OperationContract]
         bool RegistreerKlant(string username);
         [OperationContract]
+        string GetWachtwoord(string username);
+        [OperationContract]
         bool Login(string username, string password);
         [OperationContract]
         double GetKlantSaldo(string username, string password);

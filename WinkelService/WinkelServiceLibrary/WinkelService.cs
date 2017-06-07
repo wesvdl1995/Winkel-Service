@@ -71,6 +71,29 @@ namespace WinkelServiceLibrary
             return klantSaldo;
         }
 
+        public string GetWachtwoord(string username)
+        {
+            string wachtwoord = null;
+
+            using (WinkelModelContainer ctx = new WinkelModelContainer())
+            {
+                var getWachtwoord = from klant in ctx.Klanten
+                                    where klant.Username.Equals(username)
+                                    select klant.Password;
+
+                if (getWachtwoord.Count() != 1)
+                {
+                    return wachtwoord;
+                }
+                else
+                {
+                    wachtwoord = getWachtwoord.Single();
+                }
+            }
+
+            return wachtwoord;
+        }
+
         public bool RegistreerKlant(string username)
         {
             bool result = false;
