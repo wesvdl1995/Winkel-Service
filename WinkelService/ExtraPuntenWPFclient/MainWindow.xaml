@@ -27,7 +27,7 @@
                     <ListBoxItem>ListBox Item #2</ListBoxItem>
                     <ListBoxItem>ListBox Item #3</ListBoxItem>
                 </ListBox>
-                <ListBox Grid.Row="1" Grid.Column="1" Name="productsBox">
+                <ListBox Grid.Row="1" Grid.Column="1" Name="productsBox" SelectionChanged="productsBox_SelectionChanged">
                     <ListBoxItem>ListBox Item #1</ListBoxItem>
                     <ListBoxItem>ListBox Item #2</ListBoxItem>
                     <ListBoxItem>ListBox Item #3</ListBoxItem>
@@ -39,7 +39,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Click="Button_Click">buy</Button>
-                    <Button Grid.Column="1">refresh</Button>
+                    <Button Grid.Column="1" Click="Button_Click_1">refresh</Button>
                 </Grid>
             </Grid>
 

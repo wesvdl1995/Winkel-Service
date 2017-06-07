@@ -37,16 +37,35 @@ namespace ExtraPuntenWPFclient
 
             List<Product> productList = service.GetProducts(username, password);
             productsBox.Items.Clear();
+            //productsBox.Items.Add("id \t naam \t\t prijs \t aantal");
             foreach (Product p in productList)
             {
 
-                productsBox.Items.Add(p.Id + " | " + p.Naam + " | " + p.Prijs + " | " + p.Aantal);
+                productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            List<Product> productList = service.GetProducts(username, password);
+            int ProductIndex = productsBox.SelectedIndex;
+            if (ProductIndex >= 0)
+            {
+                Product selectedProduct = productList[ProductIndex];
+                if (service.BuyProduct(username, password, selectedProduct))
+                {
+                    MessageBox.Show("aankoop success");
+                }
+                else
+                {
+                    MessageBox.Show("error");
+                }
+            }
+            else
+            {
 
+                MessageBox.Show("geen selectie gemaakt");
+            }
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,6 +73,23 @@ namespace ExtraPuntenWPFclient
 
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            List<Product> productList = service.GetProducts(username, password);
+            productsBox.Items.Clear();
+            //productsBox.Items.Add("id \t naam \t\t prijs \t aantal");
+            foreach (Product p in productList)
+            {
+                if (p.Aantal > 0)
+                {
+                    productsBox.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                }
+            }
+        }
 
+        private void productsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
