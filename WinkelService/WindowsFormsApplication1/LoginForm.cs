@@ -92,17 +92,16 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
 
-            //if (service.Login(textBox1.Text, textBox2.Text))
-            //{
-                  Main_MDIParent mdi = new Main_MDIParent();
+            if (service.Login(textBox1.Text, textBox2.Text))
+            {
+                  Main_MDIParent mdi = new Main_MDIParent(textBox1.Text, textBox2.Text);
                   mdi.Show();
                   this.Visible = false;
-            //}
-            //else
-            //{
-            //    label6.Text = "Gebruikersnaam error test";
-            //    label7.Text = "Wachtwoord error test";
-            //}
+            }
+            else
+            {
+                label6.Text = "Gebruikersnaam en/of wachtwoord is incorrect";
+            }
             
         }
 
@@ -115,6 +114,12 @@ namespace WindowsFormsApplication1
         {
             //gebruikersnaam error
             
+        }
+
+
+        public string Username
+        {
+            get { return textBox1.Text; }
         }
     }
 }

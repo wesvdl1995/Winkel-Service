@@ -13,9 +13,13 @@ namespace WindowsFormsApplication1
     public partial class Main_MDIParent : Form
     {
         private int childFormNumber = 0;
+        String username;
+        String password;
 
-        public Main_MDIParent()
+        public Main_MDIParent(string username, string password)
         {
+            this.username = username;
+            this.password = password;
             InitializeComponent();
         }
 
@@ -88,7 +92,7 @@ namespace WindowsFormsApplication1
         {
             if (sal == null)
             {
-                sal = new SaldoForm();
+                sal = new SaldoForm(username, password);
                 sal.MdiParent = this;
                 sal.FormClosed += Sal_FormClosed;
                 sal.Show();
@@ -110,6 +114,11 @@ namespace WindowsFormsApplication1
             ExtraPuntenWPFclient.MainWindow wpfwindow = new ExtraPuntenWPFclient.MainWindow();
             wpfwindow.Show();
 
+
+        }
+
+        private void Main_MDIParent_Load(object sender, EventArgs e)
+        {
 
         }
     }
