@@ -22,7 +22,7 @@ namespace WinkelServiceLibrary
         [OperationContract]
         List<Product> GetProducts(string username, string password);
         [OperationContract]
-        List<AankoopRegel> GetAankopen(string username, string password);
+        List<Aankoop> GetAankopen(string username, string password);
         [OperationContract]
         bool BuyProduct(string username, string password, Product product);
     }

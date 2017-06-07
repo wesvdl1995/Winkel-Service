@@ -60,15 +60,13 @@ namespace WinkelServiceLibrary
             }
         }
 
-        public List<AankoopRegel> GetAankopen(string username, string password)
+        public List<Aankoop> GetAankopen(string username, string password)
         {
             using (WinkelModelContainer ctx = new WinkelModelContainer())
             {
                 if (Login(username, password))
                 {
-                    var getAankopen = from aankoop in ctx.AankoopRegels
-                                      where aankoop.Aankoop.Klant == GetKlant(username, password)
-                                      select aankoop;
+                    var getAankopen = ctx.Aankopen.Include("AankoopRegels");
                     return getAankopen.ToList();
                 }
                 else
