@@ -13,8 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using WinkelServiceLibrary;
-
 
 namespace ExtraPuntenWPFclient
 {
@@ -24,7 +22,7 @@ namespace ExtraPuntenWPFclient
     /// </summary>
     public partial class MainWindow : Window
     {
-        WinkelService service = new WinkelService();
+        WinkelServiceRefrence.WinkelServiceClient service = new WinkelServiceRefrence.WinkelServiceClient();
         string username;
         string password;
 

@@ -15,8 +15,10 @@ namespace WindowsFormsApplication1
 {
     public partial class LoginForm : Form
     {
+
         //WinkelService service = new WinkelService();
         WinkelServiceRefrence.WinkelServiceClient service = new WinkelServiceRefrence.WinkelServiceClient();
+        
         public LoginForm()
         {
                 InitializeComponent();

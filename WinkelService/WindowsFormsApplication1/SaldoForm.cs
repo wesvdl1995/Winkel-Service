@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using WinkelServiceLibrary;
+//using WinkelServiceLibrary;
 
 namespace WindowsFormsApplication1
 {
     public partial class SaldoForm : Form
     {
+        WinkelServiceRefrence.WinkelServiceClient service = new WinkelServiceRefrence.WinkelServiceClient();
         string username;
         string password;
 
@@ -26,7 +27,7 @@ namespace WindowsFormsApplication1
 
         private void SaldoForm_Load(object sender, EventArgs e)
         {
-            WinkelService service = new WinkelService();
+            //WinkelService service = new WinkelService();
             label1.Text = "€ "+service.GetKlantSaldo(username, password).ToString();
             int saldopersentage = (int)Math.Ceiling(service.GetKlantSaldo(username, password)) * 2;
             progressBar1.Value = (saldopersentage);

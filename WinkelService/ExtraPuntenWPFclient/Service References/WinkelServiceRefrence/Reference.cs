@@ -8,106 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExtraPuntenWPFclient.ServiceReference1 {
-    using System.Runtime.Serialization;
-    using System;
+namespace ExtraPuntenWPFclient.WinkelServiceRefrence {
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/WinkelServiceLibrary")]
-    [System.SerializableAttribute()]
-    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AantalField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NaamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double PrijsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Aantal {
-            get {
-                return this.AantalField;
-            }
-            set {
-                if ((this.AantalField.Equals(value) != true)) {
-                    this.AantalField = value;
-                    this.RaisePropertyChanged("Aantal");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Naam {
-            get {
-                return this.NaamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NaamField, value) != true)) {
-                    this.NaamField = value;
-                    this.RaisePropertyChanged("Naam");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Prijs {
-            get {
-                return this.PrijsField;
-            }
-            set {
-                if ((this.PrijsField.Equals(value) != true)) {
-                    this.PrijsField = value;
-                    this.RaisePropertyChanged("Prijs");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IWinkelService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WinkelServiceRefrence.IWinkelService")]
     public interface IWinkelService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/RegistreerKlant", ReplyAction="http://tempuri.org/IWinkelService/RegistreerKlantResponse")]
@@ -135,25 +40,31 @@ namespace ExtraPuntenWPFclient.ServiceReference1 {
         System.Threading.Tasks.Task<double> GetKlantSaldoAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/GetProducts", ReplyAction="http://tempuri.org/IWinkelService/GetProductsResponse")]
-        ExtraPuntenWPFclient.ServiceReference1.Product[] GetProducts(string username, string password);
+        WinkelServiceLibrary.Product[] GetProducts(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/GetProducts", ReplyAction="http://tempuri.org/IWinkelService/GetProductsResponse")]
-        System.Threading.Tasks.Task<ExtraPuntenWPFclient.ServiceReference1.Product[]> GetProductsAsync(string username, string password);
+        System.Threading.Tasks.Task<WinkelServiceLibrary.Product[]> GetProductsAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/GetAankopen", ReplyAction="http://tempuri.org/IWinkelService/GetAankopenResponse")]
+        WinkelServiceLibrary.Product[] GetAankopen(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/GetAankopen", ReplyAction="http://tempuri.org/IWinkelService/GetAankopenResponse")]
+        System.Threading.Tasks.Task<WinkelServiceLibrary.Product[]> GetAankopenAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/BuyProduct", ReplyAction="http://tempuri.org/IWinkelService/BuyProductResponse")]
-        bool BuyProduct(string username, string password, ExtraPuntenWPFclient.ServiceReference1.Product product);
+        bool BuyProduct(string username, string password, WinkelServiceLibrary.Product product);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/BuyProduct", ReplyAction="http://tempuri.org/IWinkelService/BuyProductResponse")]
-        System.Threading.Tasks.Task<bool> BuyProductAsync(string username, string password, ExtraPuntenWPFclient.ServiceReference1.Product product);
+        System.Threading.Tasks.Task<bool> BuyProductAsync(string username, string password, WinkelServiceLibrary.Product product);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWinkelServiceChannel : ExtraPuntenWPFclient.ServiceReference1.IWinkelService, System.ServiceModel.IClientChannel {
+    public interface IWinkelServiceChannel : ExtraPuntenWPFclient.WinkelServiceRefrence.IWinkelService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WinkelServiceClient : System.ServiceModel.ClientBase<ExtraPuntenWPFclient.ServiceReference1.IWinkelService>, ExtraPuntenWPFclient.ServiceReference1.IWinkelService {
+    public partial class WinkelServiceClient : System.ServiceModel.ClientBase<ExtraPuntenWPFclient.WinkelServiceRefrence.IWinkelService>, ExtraPuntenWPFclient.WinkelServiceRefrence.IWinkelService {
         
         public WinkelServiceClient() {
         }
@@ -206,19 +117,27 @@ namespace ExtraPuntenWPFclient.ServiceReference1 {
             return base.Channel.GetKlantSaldoAsync(username, password);
         }
         
-        public ExtraPuntenWPFclient.ServiceReference1.Product[] GetProducts(string username, string password) {
+        public WinkelServiceLibrary.Product[] GetProducts(string username, string password) {
             return base.Channel.GetProducts(username, password);
         }
         
-        public System.Threading.Tasks.Task<ExtraPuntenWPFclient.ServiceReference1.Product[]> GetProductsAsync(string username, string password) {
+        public System.Threading.Tasks.Task<WinkelServiceLibrary.Product[]> GetProductsAsync(string username, string password) {
             return base.Channel.GetProductsAsync(username, password);
         }
         
-        public bool BuyProduct(string username, string password, ExtraPuntenWPFclient.ServiceReference1.Product product) {
+        public WinkelServiceLibrary.Product[] GetAankopen(string username, string password) {
+            return base.Channel.GetAankopen(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<WinkelServiceLibrary.Product[]> GetAankopenAsync(string username, string password) {
+            return base.Channel.GetAankopenAsync(username, password);
+        }
+        
+        public bool BuyProduct(string username, string password, WinkelServiceLibrary.Product product) {
             return base.Channel.BuyProduct(username, password, product);
         }
         
-        public System.Threading.Tasks.Task<bool> BuyProductAsync(string username, string password, ExtraPuntenWPFclient.ServiceReference1.Product product) {
+        public System.Threading.Tasks.Task<bool> BuyProductAsync(string username, string password, WinkelServiceLibrary.Product product) {
             return base.Channel.BuyProductAsync(username, password, product);
         }
     }
