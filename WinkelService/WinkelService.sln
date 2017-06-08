@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinkelServiceLibrary", "WinkelServiceLibrary\WinkelServiceLibrary.csproj", "{20C376FD-AC24-4696-B299-FB8D471EAC3D}"
 EndProject
@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraPuntenWPFclient", "Ext
 	ProjectSection(ProjectDependencies) = postProject
 		{20C376FD-AC24-4696-B299-FB8D471EAC3D} = {20C376FD-AC24-4696-B299-FB8D471EAC3D}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinkelServiceHost", "WinkelServiceHost\WinkelServiceHost.csproj", "{CDB5F1F3-2751-4584-ABA1-ACFFC6CB68CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1307C52B-3747-438C-B35E-30F74DB17B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1307C52B-3747-438C-B35E-30F74DB17B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1307C52B-3747-438C-B35E-30F74DB17B30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB5F1F3-2751-4584-ABA1-ACFFC6CB68CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB5F1F3-2751-4584-ABA1-ACFFC6CB68CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB5F1F3-2751-4584-ABA1-ACFFC6CB68CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB5F1F3-2751-4584-ABA1-ACFFC6CB68CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
