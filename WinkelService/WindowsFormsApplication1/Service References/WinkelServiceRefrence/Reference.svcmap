@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1aed53a2-3754-4865-bfd8-cf4c6a6a183d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="12b495af-a35d-42f5-9613-52596d90d79e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="75c8634e-0265-430d-b511-cf65cddce763" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="3e40a6bf-3e30-4e22-a39e-6678265d6b23" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="48698b0c-f40b-4f66-8b4e-39ef10523db3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
-    <MetadataFile FileName="WinkelServiceLibrary.xsd" MetadataType="Schema" ID="e4c61522-3530-4ecc-b1b9-7c5584ab98fc" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="7e45f97e-3c10-4a27-9f76-9a79aa172327" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="77c43dc9-8944-4789-aed1-53b41c19fc3a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="fba06da1-38dd-4065-9b42-26f441cca9dc" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
+    <MetadataFile FileName="WinkelServiceLibrary.xsd" MetadataType="Schema" ID="2bcd8123-bdd4-47cc-b951-9eca21f1fc55" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WinkelServiceLibrary/WinkelService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

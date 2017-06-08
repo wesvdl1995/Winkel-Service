@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using WinkelServiceLibrary;
+//using WinkelServiceLibrary;
 
 namespace WindowsFormsApplication1
 {
     public partial class StoreForm : Form
     {
+        WinkelServiceRefrence.WinkelServiceClient service = new WinkelServiceRefrence.WinkelServiceClient();
+        
         String username;
         String password;
-        WinkelService service = new WinkelService();
+
+        //WinkelServiceRefrence.WinkelServiceClient service = new WinkelServiceRefrence.WinkelServiceClient();
 
         public StoreForm(string username, string password)
         {

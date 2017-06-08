@@ -13,6 +13,12 @@
   <wsdl:message name="IWinkelService_RegistreerKlant_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistreerKlantResponse" />
   </wsdl:message>
+  <wsdl:message name="IWinkelService_GetWachtwoord_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWachtwoord" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetWachtwoord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWachtwoordResponse" />
+  </wsdl:message>
   <wsdl:message name="IWinkelService_Login_InputMessage">
     <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
@@ -25,11 +31,17 @@
   <wsdl:message name="IWinkelService_GetKlantSaldo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetKlantSaldoResponse" />
   </wsdl:message>
-  <wsdl:message name="IWinkelService_GetInventory_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetInventory" />
+  <wsdl:message name="IWinkelService_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
   </wsdl:message>
-  <wsdl:message name="IWinkelService_GetInventory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetInventoryResponse" />
+  <wsdl:message name="IWinkelService_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetAankopen_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAankopen" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_GetAankopen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAankopenResponse" />
   </wsdl:message>
   <wsdl:message name="IWinkelService_BuyProduct_InputMessage">
     <wsdl:part name="parameters" element="tns:BuyProduct" />
@@ -42,6 +54,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/RegistreerKlant" message="tns:IWinkelService_RegistreerKlant_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/RegistreerKlantResponse" message="tns:IWinkelService_RegistreerKlant_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetWachtwoord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetWachtwoord" message="tns:IWinkelService_GetWachtwoord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetWachtwoordResponse" message="tns:IWinkelService_GetWachtwoord_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/Login" message="tns:IWinkelService_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/LoginResponse" message="tns:IWinkelService_Login_OutputMessage" />
@@ -50,9 +66,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetKlantSaldo" message="tns:IWinkelService_GetKlantSaldo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetKlantSaldoResponse" message="tns:IWinkelService_GetKlantSaldo_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetInventory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetInventory" message="tns:IWinkelService_GetInventory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetInventoryResponse" message="tns:IWinkelService_GetInventory_OutputMessage" />
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetProducts" message="tns:IWinkelService_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetProductsResponse" message="tns:IWinkelService_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAankopen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/GetAankopen" message="tns:IWinkelService_GetAankopen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/GetAankopenResponse" message="tns:IWinkelService_GetAankopen_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BuyProduct">
       <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/BuyProduct" message="tns:IWinkelService_BuyProduct_InputMessage" />
@@ -63,6 +83,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="RegistreerKlant">
       <soap:operation soapAction="http://tempuri.org/IWinkelService/RegistreerKlant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWachtwoord">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/GetWachtwoord" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -88,8 +117,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetInventory">
-      <soap:operation soapAction="http://tempuri.org/IWinkelService/GetInventory" style="document" />
+    <wsdl:operation name="GetProducts">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAankopen">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/GetAankopen" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

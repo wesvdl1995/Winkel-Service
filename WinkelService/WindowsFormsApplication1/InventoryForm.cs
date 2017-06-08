@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WinkelServiceLibrary;
 
 namespace WindowsFormsApplication1
 {
     public partial class InventoryForm : Form
     {
-        WinkelService service = new WinkelService();
+        WinkelServiceRefrence.WinkelServiceClient service = new WinkelServiceRefrence.WinkelServiceClient();
         String username;
         String password;
         public InventoryForm(string username, string password)
