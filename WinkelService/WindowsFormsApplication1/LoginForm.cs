@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.ServiceModel;
-using WinkelServiceLibrary;
+//using WinkelServiceLibrary;
 
 namespace WindowsFormsApplication1
 {
     public partial class LoginForm : Form
     {
-        WinkelService service = new WinkelService();
-        
+        //WinkelService service = new WinkelService();
+        WinkelServiceRefrence.WinkelServiceClient service = new WinkelServiceRefrence.WinkelServiceClient();
         public LoginForm()
         {
                 InitializeComponent();

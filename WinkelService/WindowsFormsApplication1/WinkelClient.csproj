@@ -158,10 +158,6 @@
       <Project>{1307c52b-3747-438c-b35e-30f74db17b30}</Project>
       <Name>ExtraPuntenWPFclient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinkelServiceLibrary\WinkelServiceLibrary.csproj">
-      <Project>{20c376fd-ac24-4696-b299-fb8d471eac3d}</Project>
-      <Name>WinkelServiceLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\50.jpg" />

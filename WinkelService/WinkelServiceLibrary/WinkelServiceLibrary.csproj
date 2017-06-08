@@ -85,9 +85,6 @@
     <Compile Include="WinkelService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <EntityDeploy Include="WinkelModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WinkelModel.Designer.cs</LastGenOutput>

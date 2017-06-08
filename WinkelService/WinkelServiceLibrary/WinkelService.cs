@@ -23,8 +23,6 @@ namespace WinkelServiceLibrary
                 {
                     using (WinkelModelContainer ctx = new WinkelModelContainer())
                     {
-
-
                         AankoopRegel aankoopRegel = new AankoopRegel { Hoeveelheid = 1 };
                         aankoopRegel.ProductId = product.Id;
                         
@@ -33,11 +31,12 @@ namespace WinkelServiceLibrary
                         
                         aankoop.AankoopRegels.Add(aankoopRegel);
 
-
-                        var klant = from k in ctx.Klanten
-                                where k.Username.Equals(username) && k.Password.Equals(password)
-                                select k;
-                        klant.Single().Saldo = saldo - prijs;
+                        var foundKlant = ctx.Klanten.Single(k => k.Username.Equals(username) && k.Password.Equals(password));
+                        if (foundKlant != null)
+                        {
+                            foundKlant.Saldo = saldo - prijs;
+                            ctx.SaveChanges();
+                        }
 
                         var foundProduct = ctx.Producten.Single(p => p.Id == product.Id);
                         if (foundProduct != null)
@@ -95,14 +94,7 @@ namespace WinkelServiceLibrary
                             producten.Add(ar.Product);
                         }
                     }
-
-                    //foreach (AankoopRegel ar in aankopen.ToList())
-                    //{
-                    //    producten.Add(ar.Product);
-                    //}
-
                     return producten;
-
                 }
                 else
                 {
@@ -122,6 +114,9 @@ namespace WinkelServiceLibrary
                                    where klant.Username.Equals(username) && klant.Password.Equals(password)
                                    select klant;
                     gevondenKlant = getKlant.Single();
+
+                    //var foundKlant = ctx.Klanten.Single(k => k.Username.Equals(username) && k.Password.Equals(password));
+                    //gevondenKlant = foundKlant;
                 }
             }
             return gevondenKlant;
