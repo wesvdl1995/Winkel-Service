@@ -85,13 +85,23 @@ namespace WindowsFormsApplication1
             }
 
 
-            //refresh inventory
-
-            //refresh saldo
-            //SaldoForm sal = (SaldoForm)Application.OpenForms["SaldoForm"];
-            //if (sal != null)
-            //    sal.Visible();
-            //    sal.Select.label1.Text = "€ " + service.GetKlantSaldo(username, password).ToString();
+            //refresh forms
+            InventoryForm inv = (InventoryForm)Application.OpenForms["InventoryForm"];
+            if (inv != null)
+            {
+                inv.Close();
+                inv = new InventoryForm(username, password);
+                inv.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                inv.Show();
+            }
+            SaldoForm sal = (SaldoForm)Application.OpenForms["SaldoForm"];
+            if (sal != null)
+            {
+                sal.Close();
+                sal = new SaldoForm(username, password);
+                sal.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                sal.Show();
+            }
 
         }
 
@@ -105,10 +115,43 @@ namespace WindowsFormsApplication1
                 if (service.BuyProduct(username, password, selectedProduct))
                 {
                     MessageBox.Show("aankoop success");
+                    productList = service.GetProducts(username, password);
+                    listBox1.Items.Clear();
+                    //listBox1.Items.Add("id \t naam \t\t prijs \t aantal");
+                    if (productList != null)
+                    {
+                        foreach (Product p in productList)
+                        {
+                            if (p.Aantal > 0)
+                            {
+                                listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        listBox1.Items.Add("* Niets om weer te geven *");
+                    }
+                    //refresh forms
+                    InventoryForm inv = (InventoryForm)Application.OpenForms["InventoryForm"];
+                    if (inv != null) {
+                        inv.Close();
+                        inv = new InventoryForm(username, password);
+                        inv.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                        inv.Show();
+                    }
+                    SaldoForm sal = (SaldoForm)Application.OpenForms["SaldoForm"];
+                    if (sal != null)
+                    {
+                        sal.Close();
+                        sal = new SaldoForm(username, password);
+                        sal.MdiParent = (Main_MDIParent)Application.OpenForms["Main_MDIParent"];
+                        sal.Show();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("error");
+                    MessageBox.Show("Uw saldo is te laag!");
                 }
             }
             else
