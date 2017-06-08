@@ -32,12 +32,11 @@ namespace WindowsFormsApplication1
             
             List<Product> productList = service.GetProducts(username, password);
             listBox1.Items.Clear();
-            //listBox1.Items.Add("id \t naam \t\t prijs \t aantal");
             if (productList != null) {
                 foreach (Product p in productList)
                 {
                     if (p.Aantal > 0) {
-                        listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                        listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t € " + p.Prijs + " \t " + p.Aantal);
                     }
                 }
             }
@@ -65,17 +64,15 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //refresh product list
             List<Product> productList = service.GetProducts(username, password);
             listBox1.Items.Clear();
-            //listBox1.Items.Add("id \t naam \t\t prijs \t aantal");
             if(productList != null)
             {
                 foreach (Product p in productList)
                 {
                     if (p.Aantal > 0)
                     {
-                        listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                        listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t € " + p.Prijs + " \t " + p.Aantal);
                     }
                 }
             }
@@ -124,7 +121,7 @@ namespace WindowsFormsApplication1
                         {
                             if (p.Aantal > 0)
                             {
-                                listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t " + p.Prijs + " \t " + p.Aantal);
+                                listBox1.Items.Add(p.Id + " \t " + p.Naam + " \t\t € " + p.Prijs + " \t " + p.Aantal);
                             }
                         }
                     }
